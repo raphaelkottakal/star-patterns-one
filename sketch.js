@@ -23,9 +23,9 @@ function drawCircleAndPoints() {
   strokeWeight(1);
   ellipse(0, 0, r * 2, r * 2);
   strokeWeight(8);
-  for(var i = 0; i < cPoints.length; i++) {
-    point(cPoints[i].x, cPoints[i].y);
-  }
+  // for(var i = 0; i < cPoints.length; i++) {
+  //   point(cPoints[i].x, cPoints[i].y);
+  // }
 }
 
 function drawDividingLines() {
@@ -70,17 +70,32 @@ function drawTenPointStar() {
   
 
 function drawIt() {
-  stroke(0);
-  drawCircleAndPoints();
-  stroke(200);
-  drawDividingLines();
-  stroke('tomato');
-  drawFirstStar();
-  stroke('lime');
-  drawSecondStar();
-  stroke(0);
-  drawTenPointStar();
-  makeFinalLines();
+  if (!theStar) {
+    return;
+  }
+  if (theStar.step >= 0) {
+    stroke(0);
+    drawCircleAndPoints();
+  }
+  if (theStar.step >= 1) {
+    stroke(200);
+    drawDividingLines();
+  }
+  if (theStar.step >= 2) {
+    stroke('tomato');
+    drawFirstStar();
+  }
+  if (theStar.step >= 3) {
+    stroke('lime');
+    drawSecondStar();
+  }
+  if (theStar.step >= 4) {
+    stroke(0);
+    drawTenPointStar();
+  }
+  if (theStar.step >= 5) {
+    makeFinalLines();
+  }
 }
 
 function makeFinalLines() {
@@ -140,6 +155,7 @@ function setup() {
     // point(x, y);
     cPoints.push(createVector(x, y));
   }
+  console.log(starOne);
   // translate(width / 2, height / 2);
   // drawIt();
 }
@@ -150,3 +166,18 @@ function draw() {
   drawIt();
   rotatePoints();
 }
+
+var starOne = function() {
+  this.step = 5;
+};
+
+var theStar;
+
+window.onload = function() {
+  theStar = new starOne();
+  var gui = new dat.GUI({
+    closeOnTop: true,
+    closed: true,
+  });
+  gui.add(theStar, 'step', 0, 6);
+};
