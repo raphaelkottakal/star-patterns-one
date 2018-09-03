@@ -126,7 +126,7 @@ function lineIntersect(p0, p1, p2, p3) {
 
 function setup() {
   r = (window.innerWidth < window.innerHeight) ? window.innerWidth / 2.3 : window.innerHeight / 2.3;
-  theta = PI / 180;
+  theta = 0.5 * PI / 180;
   piOffset = -HALF_PI;
   piSlices = TWO_PI / nPoints;
   createCanvas(window.innerWidth, window.innerHeight);
