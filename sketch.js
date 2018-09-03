@@ -168,7 +168,7 @@ function draw() {
 }
 
 var starOne = function() {
-  this.step = 5;
+  this.step = 6;
 };
 
 var theStar;
