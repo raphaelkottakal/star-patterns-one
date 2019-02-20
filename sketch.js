@@ -10,11 +10,13 @@ function makeLine(a, b) {
 }
 
 function rotatePoints() {
-  for(var i = 0; i < cPoints.length; i++) {
-    var newX = cPoints[i].x * cos(theta) - cPoints[i].y * sin(theta);
-    var newY = cPoints[i].y * cos(theta) + cPoints[i].x * sin(theta);
-    cPoints[i].x = newX;
-    cPoints[i].y = newY;
+  if(theStar && theStar.rotate) {
+    for(var i = 0; i < cPoints.length; i++) {
+      var newX = cPoints[i].x * cos(theta) - cPoints[i].y * sin(theta);
+      var newY = cPoints[i].y * cos(theta) + cPoints[i].x * sin(theta);
+      cPoints[i].x = newX;
+      cPoints[i].y = newY;
+    }
   }
   // theta += 0.001;
 }
@@ -160,7 +162,6 @@ function setup() {
     // point(x, y);
     cPoints.push(createVector(x, y));
   }
-  console.log(starOne);
   // translate(width / 2, height / 2);
   // drawIt();
 }
@@ -174,6 +175,7 @@ function draw() {
 
 var starOne = function() {
   this.step = 6;
+  this.rotate = true;
 };
 
 var theStar;
@@ -185,4 +187,5 @@ window.onload = function() {
     closed: true,
   });
   gui.add(theStar, 'step', 0, 6).step(1);
+  gui.add(theStar, 'rotate');
 };
