@@ -120,7 +120,7 @@ function makeFinalLines() {
   // point(xy4.x, xy4.y);
   // point(xy5.x, xy5.y);
   strokeWeight(3);
-  stroke('blueviolet');
+  stroke('black');
   beginShape();
   vertex(xy1.x, xy1.y);
   vertex(xy2.x, xy2.y);
