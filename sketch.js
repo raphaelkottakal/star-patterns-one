@@ -73,6 +73,10 @@ function drawIt() {
   if (!theStar) {
     return;
   }
+  if (theStar.step >= 6) {
+    makeFinalLines();
+    return;
+  }
   if (theStar.step >= 0) {
     stroke(0);
     drawCircleAndPoints();
@@ -96,6 +100,7 @@ function drawIt() {
   if (theStar.step >= 5) {
     makeFinalLines();
   }
+
 }
 
 function makeFinalLines() {
@@ -179,5 +184,5 @@ window.onload = function() {
     closeOnTop: true,
     closed: true,
   });
-  gui.add(theStar, 'step', 0, 6);
+  gui.add(theStar, 'step', 0, 6).step(1);
 };
